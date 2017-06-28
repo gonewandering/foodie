@@ -1,0 +1,12 @@
+{
+  "generator-express": {
+    "promptValues": {
+      "type": "MVC",
+      "viewEngine": "Handlebars",
+      "cssPreprocessor": "Sass",
+      "database": "MySQL",
+      "buildTool": "Gulp"
+    }
+  },
+  "generator-react-webpack": {}
+}

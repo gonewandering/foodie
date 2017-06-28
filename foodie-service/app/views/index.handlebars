@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Welcome to Foodie</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <form class="form">
+        <input type="text" class="form-control input-lg" placeholder="Search Foods..." list="autofill" />
+        <datalist id="autofill"></datalist>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script>
+$(document).ready(function ($) {
+  $setResults = function (input) {
+    $.get('/api/complete?q=' + encodeURIComponent(input)).then(function (d) {
+      $renderResults(d.results);
+    })
+  }
+
+  $renderResults = function (results) {
+    $('#autofill').html('<option value="Loading...">');
+
+    if (results.length > 0) {
+      var html = results.map(function (d) {
+        return '<option value="' + d.name + '">';
+      });
+
+      $('#autofill').html(html);
+    }
+  }
+
+  $('.input-lg').keyup(function (e) {
+    var val = $(this).val();
+    if (val.length > 3) {
+      $setResults(val);
+    }
+  });
+
+  $('.form').submit(function (e) {
+    e.preventDefault();
+    console.log('submitted');
+  })
+});
+</script>

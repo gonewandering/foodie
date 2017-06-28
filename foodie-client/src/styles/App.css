@@ -1,0 +1,21 @@
+.food-card {
+  width: 200px;
+  border: solid 1px black;
+  padding: 20px;
+  margin: 10px;
+}
+
+.food-card:first-child {
+  margin-left: 0;
+}
+
+.cards {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: stretch;
+	align-content: stretch;
+  width: 100%;
+  oveflow-x: auto;
+}
